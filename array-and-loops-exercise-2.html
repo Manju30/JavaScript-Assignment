@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array and loops</title>
+  </head>
+  <body>
+    <script>
+      //create an array of strings, loop over the array, and check if the string 'search' is 
+      //inside the array.
+      let words = ['hello', 'good', 'search', 'world', 'search'];
+      let index = -1;
+      for(let i = 0; i < words.length; i++){
+        const word = words[i];
+        if(word === 'search'){
+          index = i;
+          break;
+        }
+      }
+      console.log(index);
+
+      words = ['not', 'found'];
+      index = -1;
+      for(let i = 0; i < words.length; i++){
+        if(words[i] === 'search'){
+          index = i;
+          break;
+        }
+      }
+      console.log(index);
+     
+      /* create a function that takes an array of string and returns an array where the string 'egg' is
+      removed */
+
+      function removeEgg(foods) {
+        const foodsCopy = foods.slice();
+        const reversedFoods = foodsCopy.reverse();
+        const result = [];
+        let eggsRemoved = 0;
+
+        for (let i = 0; i < reversedFoods.length; i++) {
+          if (foods[i] === 'egg' && eggsRemoved < 2) {
+            eggsRemoved++;
+            continue;
+          }
+
+          result.push(foods[i]);
+        }
+
+        return result.reverse();
+      }
+
+      const foods = ['egg', 'apple', 'egg', 'ham'];
+      console.log(removeEgg(foods));
+      console.log(foods);
+
+      /* create the famous fizzbuzz game. 3: fizz, 5: buzz, both 3 and 5: fizzbuzz*/
+      for(let i = 0; i <= 20; i++){
+        if (i % 3 === 0){
+          console.log('fizz');
+        } else if (i % 5 === 0){
+          console.log('buzz');
+        } else if (i % 3 === 0 && i % 5 === 0){
+          console.log('fizzbuzz');
+        }
+        else {
+          console.log(i);
+        }
+      }
+
+       //create a function that searches an array for a string (in the 'word' parameter) and returns the 
+      //index of the first appearance of the string.. return -1 if it doesn't exist
+
+      function findIndex(array, word) {
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === word) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      function unique(array) {
+        const result = [];
+        for (let i = 0; i < array.length; i++) {
+          const word = array[i];
+          if (findIndex(result, word) === -1) {
+            result.push(word);
+          }
+        }
+        return result;
+      }
+
+      console.log(unique(['green', 'red', 'blue', 'red']));
+      console.log(unique(['red', 'green', 'green', 'red'         ]));
+    </script>
+  </body>
+</html>

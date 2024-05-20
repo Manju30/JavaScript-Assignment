@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Exercise
+    </title>
+  </head>
+  <body>
+    <button onclick="document.querySelector('.js-result').innerHTML = 'You chose heads';">Heads</button>
+    <button onclick="document.querySelector('.js-result').innerHTML = 'You chose tails';">Tails</button>
+    <p class="js-result"></p>
+
+    <input class="js-input" placeholder="Enter your name" onkeydown="hasEnterFunc(event)">
+    <button onclick="namefunc()">Submit</button>
+    <p class="js-name"></p>
+
+    <input class="js-key-input" onkeyup="showInputValue(event)" placeholder="Type here">
+    <p class="js-message"></p>
+    
+    <script>
+      function namefunc() {
+        const text = document.querySelector('.js-input').value;
+        if(text === ''){
+          document.querySelector('.js-name').innerHTML = '';
+        } else if (text !== ''){
+          document.querySelector('.js-name').innerHTML = `Your name is: ${text}`;
+        }
+      }
+
+      function hasEnterFunc() {
+        if(event.key === 'Enter'){
+          namefunc();
+        }
+      }
+
+      function showInputValue(event) {
+        console.log(event);
+        const inputValue = document.querySelector('.js-key-input');
+        document.querySelector('.js-message').innerHTML = inputValue.value;
+      }
+    </script>
+  </body>
+</html>

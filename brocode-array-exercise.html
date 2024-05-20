@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+  </head>
+  <body>
+    <script>
+      //capitalize the first element of a string
+      
+      let students = ["spongebob", "patrick", "squidward"];
+      students.forEach((element, index, array) => {
+        array[index] = element[0].toUpperCase() + element.substring(1);
+      });
+      students.forEach((element) => {
+        console.log(element);
+      });
+
+      //square and cube the given number and create a new array using map()
+
+      let numbers = [1, 2, 3, 4, 5];
+      let square = numbers.map((element) => {
+        return Math.pow(element, 2);
+      });
+      let cube = numbers.map((element) => {
+        return Math.pow(element, 3);
+      });
+      console.log(square);
+      console.log(cube);
+
+      //create a new array with the age of an adult using filter()
+
+      let ages = [18, 16, 21, 17, 19, 90];
+      let adults = ages.filter((element) => {
+        return element > 18;
+      });
+      console.log(adults);
+
+      //add the elements in an array using reduce()
+
+      let prices = [5, 10, 15, 20, 25];
+      let total = prices.reduce((total, element) => {
+        return total + element;
+      });
+      console.log(`The total is: $${total}`);
+
+      //sort an array in ascending and descending order
+
+      let grades = [100, 50, 90, 60, 80, 70];
+
+      let ascending = grades.sort((a, b) => {
+        return a - b;
+      });
+      console.log(ascending);
+
+      let descending = grades.sort((a, b) => {
+        return b - a;
+      });
+      console.log(descending);
+
+      //shuffle an array
+
+      let cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+      console.log(shuffle(cards));
+      
+      function shuffle(array){
+        let currentIndex = array.length;
+        while(currentIndex != 0){
+          let randomIndex = Math.round(Math.random());
+          currentIndex -= 1;
+          let temp = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temp;
+        }
+        return array;
+      }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

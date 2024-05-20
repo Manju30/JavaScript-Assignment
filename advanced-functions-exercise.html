@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <button class="js-start-button">Start</button>
+    <button class="js-add-button">Add to cart</button>
+    <button onclick="messages++;">Add</button>
+    <button onclick="messages--;">Remove</button>
+    <p class="js-added"></p>
+    <script>
+      const add = () => {
+        console.log(2 + 3);
+      }
+      add();
+
+      document.querySelector('.js-start-button').addEventListener('click', () => {
+        const buttonValue = document.querySelector('.js-start-button');
+        buttonValue.innerHTML = 'Loading...'
+
+        setTimeout(() => {
+          buttonValue.innerHTML = 'Finished!';
+        }, 1000);
+      });
+   
+
+      let timeOut;
+      document.querySelector('.js-add-button').addEventListener('click', () => {
+        const addToCartValue = document.querySelector('.js-added');
+        addToCartValue.innerHTML = 'Added';
+
+        clearTimeout(timeOut);
+
+        timeOut = setTimeout(() => {
+          addToCartValue.innerHTML = '';
+        }, 2000);
+      });
+
+      let messages = 2;
+
+      setInterval(() => {
+        if (document.title === 'Advanced Functions') {
+          document.title = `(${messages}) New messages`;
+        } else {
+          document.title = 'Advanced Functions';
+        }
+      }, 1000)
+    </script>
+  </body>
+</html>

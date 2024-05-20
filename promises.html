@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promises</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <p id="await"></p>
+  </body>
+  <script>
+  //example 1-
+  let myPromise = new Promise((myResolve, myReject) => {
+    setTimeout(() => myResolve("Successful!"), 3000);
+  });
+
+  myPromise.then(value => { document.getElementById("demo").innerHTML = value; });
+
+  //example 2
+
+  let myPromise1 = new Promise((myResolve, myReject) => {
+    let x = 0;
+    if(x === 0){
+      myResolve('File uploaded');
+    } 
+    else{
+      myReject('Failed');
+    }
+  });
+
+  myPromise1.then(value => console.log(value))
+            .catch(error => console.log(error));
+
+  //async function 
+
+  async function fileLoad(){
+    let fileLoaded = false;
+    if(fileLoaded){
+      return 'Updated';
+    }
+    else{
+      throw 'Failed';
+    }
+  }
+
+  fileLoad().then(value => console.log(value))
+            .catch(error => console.log(error))
+
+  //await eg 1
+
+  async function myDisplay() {
+  let myPromise3 = new Promise(resolve => {
+    setTimeout(() => resolve("Success!!!"), 3000);
+  });
+  document.getElementById("await").innerHTML = await myPromise3;
+}
+
+myDisplay();
+
+//await eg 2
+
+async function fileUpload(){
+  let hasFileLoaded = true;
+  if(hasFileLoaded){
+    return 'File Uploaded Successfully!!'
+  }
+  else{
+    throw 'Operation Failed'
+  }
+}
+async function displayMessage(){
+  try{
+    let message = await fileUpload();
+    console.log(message);
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+displayMessage();
+</script>
+</html>
